@@ -1,0 +1,32 @@
+- hosts: default
+  become: true
+  vars:
+    jenkins_package_state: latest
+    jenkins_hostname: localhost
+    jenkins_admin_username: admin
+    jenkins_admin_password: 'admin123'
+    jenkins_http_port: 8080
+    jenkins_plugins_install_dependencies: true
+    jenkins_plugins:
+      - ws-cleanup
+      - ansicolor
+      - aws-credentials
+      - credentials
+      - credentials-binding
+      - generic-webhook-trigger
+      - git
+      - multibranch-scan-webhook-trigger
+      - ssh-credentials
+      - workflow-multibranch
+      - pipeline-aws
+      - pipeline-model-definition
+      - pipeline-stage-step
+      - pipeline-utility-steps
+      - blueocean
+      - configuration-as-code
+      - amazon-ecs
+
+  roles:
+    - role: geerlingguy.java
+    - role: geerlingguy.jenkins
+    - role: geerlingguy.docker
